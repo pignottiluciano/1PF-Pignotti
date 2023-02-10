@@ -1,0 +1,18 @@
+<h4>Cursos</h4>
+<table mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>nombre</th>
+    <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+  </ng-container>
+  <ng-container matColumnDef="comision">
+    <th mat-header-cell *matHeaderCellDef>comision</th>
+    <td mat-cell *matCellDef="let element">{{ element.comision }}</td>
+  </ng-container>
+  <ng-container matColumnDef="profesor">
+    <th mat-header-cell *matHeaderCellDef>profesor</th>
+    <td mat-cell *matCellDef="let element">{{ element.profesor.nombre }}</td>
+  </ng-container>
+
+  <tr mat-footer-row *matHeaderRowDef="columnas"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+</table>

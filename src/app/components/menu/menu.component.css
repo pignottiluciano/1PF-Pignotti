@@ -1,0 +1,22 @@
+.menu{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #1783db;
+}
+h1{
+    color: white;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+}
+ul{
+    margin-top: 25px;
+    list-style:none;
+}
+li{
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.2rem;
+}

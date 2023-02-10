@@ -1,0 +1,12 @@
+.wrong-data-text{
+    color: #e95f5f;
+}
+.wrong-data-input{
+    border: 1px solid #e95f5f;
+}
+.ok-data-input{
+    border: 1px solid #5fe982;
+}
+.ok-data-text{
+    color: #5fe982;
+}

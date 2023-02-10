@@ -1,0 +1,9 @@
+<section class="grid-container">
+  <app-toolbar [id]="idMenu" class="toolbar"></app-toolbar>
+
+  <app-menu [(id)]="idMenu" class="menu"></app-menu>
+  <div *ngIf="idMenu == 'inicio'" class="main-wrapper"><h1>Bienvenidos!</h1></div>
+  <app-material *ngIf="idMenu == 'cursos'" class="main-wrapper"></app-material>
+  <!-- <app-formulario-reactivo class="main-wrapper"></app-formulario-reactivo> -->
+  <app-main-wrapper *ngIf="idMenu == 'alumnos'" class="main-wrapper"></app-main-wrapper>
+</section>
