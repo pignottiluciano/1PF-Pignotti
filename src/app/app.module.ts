@@ -9,7 +9,8 @@ import { FormularioReactivoComponent } from './components/formulario-reactivo/fo
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponent } from './components/material/material.component';
-import {MatTableModule} from '@angular/material/table'
+import { MaterialModule } from './material.module';
+import { EditAlumnoComponent } from './components/main-wrapper/edit-alumno/edit-alumno.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +19,16 @@ import {MatTableModule} from '@angular/material/table'
     MenuComponent,
     MainWrapperComponent,
     FormularioReactivoComponent,
-    MaterialComponent
+    MaterialComponent,
+    EditAlumnoComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

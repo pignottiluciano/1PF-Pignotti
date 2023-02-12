@@ -15,3 +15,10 @@ li{
 .title{
     font-size: 1.5rem;
 }
+.estado{
+    display: flex;
+    align-items: center;
+}
+.estado-span{
+    min-width: 70px;
+}
