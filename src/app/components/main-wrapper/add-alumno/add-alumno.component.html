@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Editar Alumno</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <form [formGroup]="formularioEditar">
+  <p>Agregar Alumno</p>
+  <form [formGroup]="formularioAgregar">
     <div class="mb-3">
       <label for="nombre" class="form-label">Nombre:</label>
       <input
@@ -36,11 +36,15 @@
         class="form-check-input"
         id="estado"
       />
-      <label class="form-check-label" for="estado">Seleccione para activar alumno</label>
+      <label class="form-check-label" for="estado"
+        >Seleccione para activar alumno</label
+      >
     </div>
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cerrar</button>
-  <button mat-button (click)="edit()">Editar</button>
+  <button mat-button [mat-dialog-close]="data" (click)="addAlumno()">
+    Agregar
+  </button>
 </div>

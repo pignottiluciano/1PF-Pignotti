@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponent } from './components/material/material.component';
 import { MaterialModule } from './material.module';
 import { EditAlumnoComponent } from './components/main-wrapper/edit-alumno/edit-alumno.component';
+import { FormsModule } from '@angular/forms';
+import { AddAlumnoComponent } from './components/main-wrapper/add-alumno/add-alumno.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { EditAlumnoComponent } from './components/main-wrapper/edit-alumno/edit-
     MainWrapperComponent,
     FormularioReactivoComponent,
     MaterialComponent,
-    EditAlumnoComponent
+    EditAlumnoComponent,
+    AddAlumnoComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

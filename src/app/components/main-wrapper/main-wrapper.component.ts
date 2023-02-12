@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
+import { AddAlumnoComponent } from './add-alumno/add-alumno.component';
 import { EditAlumnoComponent } from './edit-alumno/edit-alumno.component';
 
 @Component({
@@ -35,19 +36,9 @@ export class MainWrapperComponent {
   dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(
     this.alumnos
   );
-  columnas: string[] = [
-    'nombreYApellido',
-    'edad',
-    'estado',
-    'cambioEstado',
-    'editarEliminar',
-  ];
+  columnas: string[] = ['nombreYApellido', 'edad', 'estado', 'editarEliminar'];
 
-  constructor(
-    private dialog: MatDialog
-    ) {
-
-    }
+  constructor(private dialog: MatDialog) {}
 
   cambioEstado(id: any) {
     this.alumnos.forEach((Alumno) => {
@@ -58,7 +49,23 @@ export class MainWrapperComponent {
   }
 
   modalEdit(alumno: Alumno) {
-    const dialogRef = this.dialog.open(EditAlumnoComponent, {data: alumno});
+    const dialogRef = this.dialog.open(EditAlumnoComponent, { data: alumno });
   }
 
+  AgregarAlumno() {
+    const dialogRef = this.dialog.open(AddAlumnoComponent, {
+      data: this.alumnos,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.dataSource = new MatTableDataSource<Alumno>(this.alumnos);
+    });
+  }
+
+  eliminarUsuario(index: number, id: any) {
+    if (confirm('Quiere Eliminar este alumno?')) {
+      this.alumnos.splice(index, 1);
+      this.dataSource = new MatTableDataSource<Alumno>(this.alumnos);
+    }
+  }
 }

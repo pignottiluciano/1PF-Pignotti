@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   idMenu?: string;
 
   ngOnInit() {
-    this.idMenu = 'inicio';
+    this.idMenu = 'alumnos';
   }
 }

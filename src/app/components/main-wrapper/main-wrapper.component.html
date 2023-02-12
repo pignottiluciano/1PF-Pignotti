@@ -1,10 +1,7 @@
 <section class="main">
-  <!-- <ul>
-        <li *ngFor="let alumno of alumnos" [ngClass]="{'alumno-active': alumno.estado}">
-            <span>{{alumno.nombre}}</span><button *ngIf="!alumno.estado" (click)="cambioEstado(alumno.id)">activar</button><button *ngIf="alumno.estado" (click)="cambioEstado(alumno.id)">Desactivar</button>
-        </li>
-        
-    </ul> -->
+  <button mat-raised-button color="primary" (click)="AgregarAlumno()">
+    Agregar Alumno
+  </button>
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="nombreYApellido">
       <th mat-header-cell *matHeaderCellDef class="title">Nombre Y Apellido</th>
@@ -20,7 +17,9 @@
       <th mat-header-cell *matHeaderCellDef class="title">Estado</th>
       <td mat-cell *matCellDef="let element">
         <div class="estado">
-          <div class="estado-span">{{ element.estado ? "activo" : "No activo" }}</div>
+          <div class="estado-span">
+            {{ element.estado ? "activo" : "No activo" }}
+          </div>
           <div>
             <button
               mat-button
@@ -42,34 +41,17 @@
         </div>
       </td>
     </ng-container>
-    <ng-container matColumnDef="cambioEstado">
-      <th mat-header-cell *matHeaderCellDef class="title">Cambio Estado</th>
-      <td mat-cell *matCellDef="let element">
-        <button
-          mat-button
-          color="primary"
-          *ngIf="!element.estado"
-          (click)="cambioEstado(element.id)"
-        >
-          activar
-        </button>
-        <button
-          mat-button
-          color="warn"
-          *ngIf="element.estado"
-          (click)="cambioEstado(element.id)"
-        >
-          Desactivar
-        </button>
-      </td>
-    </ng-container>
     <ng-container matColumnDef="editarEliminar">
       <th mat-header-cell *matHeaderCellDef class="title">Acciones</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary">
+      <td mat-cell *matCellDef="let element; let i = index">
+        <button mat-icon-button color="primary" (click)="modalEdit(element)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn">
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="eliminarUsuario(i, element.id)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
