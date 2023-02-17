@@ -13,6 +13,9 @@ import { MaterialModule } from './material.module';
 import { EditAlumnoComponent } from './components/main-wrapper/edit-alumno/edit-alumno.component';
 import { FormsModule } from '@angular/forms';
 import { AddAlumnoComponent } from './components/main-wrapper/add-alumno/add-alumno.component';
+import { CursoService } from './services/curso.service';
+import { AlumnoService } from './services/alumno.service';
+import { ProfesorService } from './services/profesor.service';
 
 @NgModule({
   declarations: [
@@ -23,16 +26,16 @@ import { AddAlumnoComponent } from './components/main-wrapper/add-alumno/add-alu
     FormularioReactivoComponent,
     MaterialComponent,
     EditAlumnoComponent,
-    AddAlumnoComponent
+    AddAlumnoComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [CursoService, AlumnoService, ProfesorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
