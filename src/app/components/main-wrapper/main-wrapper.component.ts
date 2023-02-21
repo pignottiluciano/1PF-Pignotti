@@ -21,8 +21,8 @@ export class MainWrapperComponent implements OnInit {
     private dialog: MatDialog,
     private alumnoService: AlumnoService
   ) {}
-  ngOnInit(): void {
-    this.alumnos = this.alumnoService.obtenerAlumnos();
+  async ngOnInit(): Promise<void> {
+    this.alumnos = await this.alumnoService.obtenerAlumnosPromise();
     this.actualizarLista();
   }
 
@@ -36,18 +36,16 @@ export class MainWrapperComponent implements OnInit {
     }
   }
 
-  actualizarLista(){
+  actualizarLista() {
     this.dataSource = new MatTableDataSource<Alumno>(this.alumnos);
   }
 
   modalEdit(alumno: Alumno) {
-    let dialogRef = this.dialog.open(EditAlumnoComponent, { data: alumno });
+    const dialogRef = this.dialog.open(EditAlumnoComponent, { data: alumno });
   }
 
   AgregarAlumno() {
-    let dialogRef = this.dialog.open(AddAlumnoComponent, {
-      data: this.alumnos,
-    });
+    const dialogRef = this.dialog.open(AddAlumnoComponent, {});
 
     dialogRef.afterClosed().subscribe((result) => {
       this.actualizarLista();

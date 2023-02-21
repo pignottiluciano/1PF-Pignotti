@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../models/alumno';
+import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlumnoService {
   private alumnos: Alumno[] = [
@@ -27,14 +28,34 @@ export class AlumnoService {
     },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  obtenerAlumnos(): Array<Alumno>{
-    return this.alumnos
+  obtenerAlumnos(): Array<Alumno> {
+    return this.alumnos;
+  }
+  obtenerAlumnosPromise(): Promise<Alumno[]> {
+    return new Promise((resolve, reject) => {
+      if (this.alumnos.length > 0) {
+        resolve(this.alumnos);
+      } else {
+        reject({ codigo: 0, descripcion: 'arreglo vacio', data: [] });
+      }
+    });
+  }
+  obtenerAlumnosObservable(): Observable<Alumno[]> {
+    return new Observable<Alumno[]>((suscriptor) => {
+      suscriptor.next(this.alumnos);
+    })
   }
 
-  eliminarAlumnos(index: number): Array<Alumno>{
+  eliminarAlumnos(index: number): Array<Alumno> {
     this.alumnos.splice(index, 1);
-    return this.alumnos
+    return this.alumnos;
+  }
+  agregarAlumno(newAlumno: Alumno) {
+    this.alumnos.push(newAlumno);
+
+    console.log('agrego', this.alumnos);
+    return this.alumnos;
   }
 }

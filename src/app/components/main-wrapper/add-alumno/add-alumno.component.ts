@@ -7,6 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
+import { AlumnoService } from 'src/app/services/alumno.service';
 
 @Component({
   selector: 'app-add-alumno',
@@ -15,8 +16,10 @@ import { Alumno } from 'src/app/models/alumno';
 })
 export class AddAlumnoComponent {
   formularioAgregar: FormGroup;
+  alumnos!: Alumno[];
 
   constructor(
+    private alumnoService: AlumnoService,
     public dialogRef: MatDialogRef<AddAlumnoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -27,16 +30,20 @@ export class AddAlumnoComponent {
       estado: new FormControl(),
     });
   }
+  async ngOnInit(): Promise<void> {
+    this.alumnos = await this.alumnoService.obtenerAlumnosPromise();
+  }
 
   addAlumno() {
-    let newAlumno: Alumno = {
-      id: this.data.length + 1,
+    const newAlumno: Alumno = {
+      id: this.alumnos.length + 1,
       nombre: this.formularioAgregar.value.nombre,
       apellido: this.formularioAgregar.value.apellido,
       edad: this.formularioAgregar.value.edad,
       estado: this.formularioAgregar.value.estado,
     };
-    this.data.unshift(newAlumno);
+    console.log(newAlumno);
+    this.alumnoService.agregarAlumno(newAlumno);
     this.dialogRef.close();
   }
 

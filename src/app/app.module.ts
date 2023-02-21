@@ -16,6 +16,7 @@ import { AddAlumnoComponent } from './components/main-wrapper/add-alumno/add-alu
 import { CursoService } from './services/curso.service';
 import { AlumnoService } from './services/alumno.service';
 import { ProfesorService } from './services/profesor.service';
+import { ListaAlumnosComponent } from './components/main-wrapper/lista-alumnos/lista-alumnos.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProfesorService } from './services/profesor.service';
     MaterialComponent,
     EditAlumnoComponent,
     AddAlumnoComponent,
+    ListaAlumnosComponent,
   ],
   imports: [
     BrowserModule,
